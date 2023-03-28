@@ -1,4 +1,6 @@
+import { FilterStatus } from "./filterStatus";
+
 export interface TodoFilter {
-  status: string;
+  status: FilterStatus;
   colors: [];
 }
