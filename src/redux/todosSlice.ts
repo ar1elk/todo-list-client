@@ -3,6 +3,12 @@ import { TodoFilter } from "../dto's/todoFilter";
 import { TodoItem } from "../dto's/todoItem";
 import { onTodoAdded } from "./reducerLogics/todo/todoAdded";
 import { onTodoRemoved } from "./reducerLogics/todo/todoRemoved";
+import { FilterStatus } from "../dto's/filterStatus";
+import { onTodoCompleted } from "./reducerLogics/todo/todoCompleted";
+import { onTodoCleared } from "./reducerLogics/todo/todoCleared";
+import { onTodoColored } from "./reducerLogics/todo/todoColored";
+import { onAllTodosCompleted } from "./reducerLogics/todo/allTodosCompleted";
+import { onAllTodosCleared } from "./reducerLogics/todo/allTodosCleared";
 
 export interface TodoState {
   todos: TodoItem[];
@@ -12,7 +18,7 @@ export interface TodoState {
 const initialState: TodoState = {
   todos: [{ id: 0, text: "My todo", isCompleted: false }],
   filter: {
-    status: "All",
+    status: FilterStatus.All,
     colors: [],
   },
 };
@@ -23,6 +29,11 @@ const todosSlice = createSlice({
   reducers: {
     todoAdded: onTodoAdded,
     todoRemoved: onTodoRemoved,
+    todoCompleted: onTodoCompleted,
+    todoCleared: onTodoCleared,
+    todoColored: onTodoColored,
+    allTodosCompleted: onAllTodosCompleted,
+    allTodosCleared: onAllTodosCleared
   },
 });
 
