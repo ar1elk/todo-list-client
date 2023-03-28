@@ -1,6 +1,6 @@
 import { Action } from "@reduxjs/toolkit";
-import { TodoState } from "../../todosSlice";
 import { Color } from "../../../dto's/todoItem";
+import { TodoState } from "../../../dto's/todoState";
 
 export function onTodoColored(
   state: TodoState,

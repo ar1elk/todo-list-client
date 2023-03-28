@@ -1,7 +1,7 @@
 import { Action } from "@reduxjs/toolkit";
-import { TodoState } from "../../todosSlice";
 import { FilterStatus } from "../../../dto's/filterStatus";
+import { TodoState } from "../../../dto's/todoState";
 
-export function onPendingFilterSelected(state: TodoState, action: Action) {
+export function onPendingTodosFilterSelected(state: TodoState, action: Action) {
   state.filter.status = FilterStatus.Cleared;
 }

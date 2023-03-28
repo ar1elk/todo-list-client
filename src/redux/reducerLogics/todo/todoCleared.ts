@@ -1,5 +1,5 @@
 import { Action } from "@reduxjs/toolkit";
-import { TodoState } from "../../todosSlice";
+import { TodoState } from "../../../dto's/todoState";
 
 export function onTodoCleared(
   state: TodoState,

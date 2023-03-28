@@ -1,6 +1,6 @@
 import { Action } from "@reduxjs/toolkit";
 import { TodoItem } from "../../../dto's/todoItem";
-import { TodoState } from "../../todosSlice";
+import { TodoState } from "../../../dto's/todoState";
 
 function getNextTodoId(todos: TodoItem[]): number {
   return todos.reduce((maxId, todo) => Math.max(maxId, todo.id), -1);
