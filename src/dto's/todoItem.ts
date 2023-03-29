@@ -1,8 +1,8 @@
-export type Color = "red" | "green" | "yellow" | "purple" | "cyan";
+import { Color } from "../datasets/colors";
 
 export interface TodoItem {
   id: number;
   text: string;
   isCompleted: boolean;
-  color?: Color;
+  color?: Color | undefined;
 }
