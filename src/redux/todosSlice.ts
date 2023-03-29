@@ -7,6 +7,9 @@ import { onTodoCleared } from "./reducerLogics/todo/todoCleared";
 import { onTodoColored } from "./reducerLogics/todo/todoColored";
 import { onTodoCompleted } from "./reducerLogics/todo/todoCompleted";
 import { onTodoRemoved } from "./reducerLogics/todo/todoRemoved";
+import { onPendingTodosFilterSelected } from "./reducerLogics/filter/pendingTodos";
+import { onCompletedTodosFilterSelected } from "./reducerLogics/filter/completedTodos";
+import { onAllTodosFilterSelected } from "./reducerLogics/filter/allTodos";
 
 const todosSlice = createSlice({
   name: "todos",
@@ -19,6 +22,9 @@ const todosSlice = createSlice({
     todoColored: onTodoColored,
     allTodosCompleted: onAllTodosCompleted,
     allTodosCleared: onAllTodosCleared,
+    allTodosFilterSelected: onAllTodosFilterSelected,
+    completedTodosFilterSelected: onCompletedTodosFilterSelected,
+    pendingTodosFilterSelected: onPendingTodosFilterSelected,
   },
 });
 
