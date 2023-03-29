@@ -1,12 +1,8 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { todosReducer } from "./todosSlice";
-import { filterReducer } from "./filterSlice";
 
 export const store = configureStore({
-  reducer: {
-    todos: todosReducer,
-    filter: filterReducer,
-  },
+  reducer: todosReducer,
 });
 
 export type AppDispatch = typeof store.dispatch;
