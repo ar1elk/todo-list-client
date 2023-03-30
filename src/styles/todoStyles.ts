@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
+import {
+  IconButton,
+  Paper,
+  Select,
+  TextField,
+  TextFieldProps,
+} from "@mui/material";
 import { Color } from "../datasets/colors";
-import { IconButton, Paper, Select, TextField } from "@mui/material";
 
 export const CompleteTodoButton = styled(IconButton)`
   color: ${(props) => (props.value || "lime") as Color};
@@ -9,28 +15,28 @@ export const CompleteTodoButton = styled(IconButton)`
 
 export const RemoveTodoButton = styled(IconButton)`
   color: ${(props) => (props.value || "red") as Color};
-  margin-left: 10px;
 `;
 
-export const TodoText = styled(TextField)`
-  &.MuiInputBase-root {
-    font-family: Assistant;
-    width: fit-content;
-  }
-  &.MuiInputLabel-root {
-    display: none;
-  }
+type TodoTextProps = Omit<TextFieldProps, "borderColor"> & {
+  borderColor?: Color;
+};
+
+export const TodoText = styled(TextField)<TodoTextProps>`
   & .MuiInputBase-input {
     font-size: 1.5rem;
-    padding: 2px 8px;
+    font-family: Assistant;
   }
-  &:hover .MuiOutlinedInput-notchedOutline,
-  &.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: ${(props) => props.value as Color};
+  & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+  & .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: ${(props) => props.borderColor as Color};
   }
-  &:not(:hover):not(.Mui-focused) .MuiOutlinedInput-notchedOutline {
+  & .MuiOutlinedInput-notchedOutline {
+    transition: border-color 200ms;
     border-color: transparent;
   }
+  max-width: calc(100% - 230px);
+  padding-top: 8px;
+  padding-bottom: 8px;
 `;
 
 export const TodoPaper = styled(Paper)`
