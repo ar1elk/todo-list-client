@@ -4,11 +4,12 @@ import { onAllTodosCleared } from "./reducerLogics/todo/allTodosCleared";
 import { onAllTodosCompleted } from "./reducerLogics/todo/allTodosCompleted";
 import { onTodoAdded } from "./reducerLogics/todo/todoAdded";
 import { onTodoColored } from "./reducerLogics/todo/todoColored";
-import { onTodoCompleted } from "./reducerLogics/todo/todoCompleteButtonClicked";
+import { onTodoCompleted } from "./reducerLogics/todo/todoCompleted";
 import { onTodoRemoved } from "./reducerLogics/todo/todoRemoved";
 import { onPendingTodosFilterSelected } from "./reducerLogics/filter/pendingTodos";
 import { onCompletedTodosFilterSelected } from "./reducerLogics/filter/completedTodos";
 import { onAllTodosFilterSelected } from "./reducerLogics/filter/allTodos";
+import { onTodoTextUpdated } from "./reducerLogics/todo/todoTextUpdated";
 
 const todosSlice = createSlice({
   name: "todos",
@@ -18,6 +19,7 @@ const todosSlice = createSlice({
     todoRemoved: onTodoRemoved,
     todoCompleted: onTodoCompleted,
     todoColored: onTodoColored,
+    todoTextUpdated: onTodoTextUpdated,
     allTodosCompleted: onAllTodosCompleted,
     allTodosCleared: onAllTodosCleared,
     allTodosFilterSelected: onAllTodosFilterSelected,
@@ -31,6 +33,7 @@ export const {
   todoRemoved,
   todoCompleted,
   todoColored,
+  todoTextUpdated,
   allTodosCompleted,
   allTodosCleared,
   allTodosFilterSelected,
