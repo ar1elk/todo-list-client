@@ -4,7 +4,10 @@ import { TodoState } from "../dto's/todoState";
 
 export const initialState: TodoState = {
   todos: {
-    [uuidv4()]: { text: "My todo", isCompleted: false },
+    [uuidv4()]: {
+      text: "My todo",
+      isCompleted: false,
+    },
     [uuidv4()]: { text: "My todo2", isCompleted: false },
   },
   filter: {
