@@ -28,4 +28,16 @@ const todosSlice = createSlice({
   },
 });
 
+export const {
+  todoAdded,
+  todoRemoved,
+  todoCompleted,
+  todoCleared,
+  todoColored,
+  allTodosCompleted,
+  allTodosCleared,
+  allTodosFilterSelected,
+  completedTodosFilterSelected,
+  pendingTodosFilterSelected,
+} = todosSlice.actions;
 export const todosReducer = todosSlice.reducer;
