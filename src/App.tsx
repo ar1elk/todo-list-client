@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
-import { Todo } from "./components/todo";
+import { TodoList } from "./components/todoList";
+import { TodoItem } from "./dto's/todoItem";
 import { TodoState } from "./dto's/todoState";
 
 function App() {
-  const todo = useSelector((state: TodoState) => state.todos[0]);
+  const todos: { [id: string]: TodoItem } = useSelector(
+    (state: TodoState) => state.todos
+  );
   return (
     <div className="App">
-      <Todo {...todo}></Todo>
+      <TodoList todos={todos}></TodoList>
     </div>
   );
 }

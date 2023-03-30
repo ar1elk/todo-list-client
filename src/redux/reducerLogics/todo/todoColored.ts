@@ -4,12 +4,7 @@ import { Color } from "../../../datasets/colors";
 
 export function onTodoColored(
   state: TodoState,
-  action: Action & { payload: { id: number; color: Color } }
+  action: Action & { payload: { id: string; color: Color } }
 ): void {
-  state.todos = state.todos.map((todoItem) => {
-    if (todoItem.id === action.payload.id) {
-      return { ...todoItem, color: action.payload.color };
-    }
-    return todoItem;
-  });
+  state.todos[action.payload.id].color = action.payload.color;
 }

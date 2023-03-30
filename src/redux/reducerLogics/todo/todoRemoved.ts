@@ -3,9 +3,7 @@ import { TodoState } from "../../../dto's/todoState";
 
 export function onTodoRemoved(
   state: TodoState,
-  action: Action & { payload: number }
+  action: Action & { payload: string }
 ): void {
-  state.todos = state.todos.filter(
-    (todoItem) => todoItem.id !== action.payload
-  );
+  delete state.todos[action.payload];
 }
