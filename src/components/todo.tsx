@@ -5,7 +5,12 @@ import { MenuItem } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { Color, colors } from "../datasets/colors";
 import { TodoItem } from "../dto's/todoItem";
-import { todoColored, todoCompleted, todoRemoved } from "../redux/todosSlice";
+import {
+  todoColored,
+  todoCompleted,
+  todoRemoved,
+  todoTextUpdated,
+} from "../redux/todosSlice";
 import {
   ColorSelection,
   CompleteTodoButton,
@@ -21,6 +26,7 @@ export function Todo({
   color = "",
 }: TodoItem & { id: string }) {
   const dispatch = useDispatch();
+
   return (
     <TodoPaper elevation={0} color={color}>
       <CompleteTodoButton
@@ -33,7 +39,15 @@ export function Todo({
           <CircleOutlinedIcon fontSize="large" />
         )}
       </CompleteTodoButton>
-      <TodoText value={text}></TodoText>
+      <TodoText
+        multiline
+        fullWidth
+        borderColor={color}
+        value={text}
+        onChange={(e) =>
+          dispatch(todoTextUpdated({ id: id, text: e.target.value }))
+        }
+      ></TodoText>
       <ColorSelection
         labelId="color-select-label"
         id="color-select"
