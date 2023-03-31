@@ -69,6 +69,7 @@ export function Todo({
             labelId="color-select-label"
             id="color-select"
             todocolor={color}
+            value={color === defaultColor ? "" : color}
             label="Color"
             MenuProps={{ PaperProps: { style: { maxHeight: "160px" } } }}
             onChange={(e) =>
