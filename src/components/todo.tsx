@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import { TodoPaper } from "../styles/todoPaperStyle";
 import { CompleteTodoButton } from "../styles/completeTodoButtonStyle";
 import { ColorInputLabel } from "../styles/colorInputLabelStyle";
-import { ColorSelection } from "../styles/colorSelectionStyle";
+import { ColorSelection, defaultColor } from "../styles/colorSelectionStyle";
 import { RemoveTodoButton } from "../styles/removeTodoButtonStyle";
 import { TodoText } from "../styles/todoTextStyle";
 
@@ -23,7 +23,7 @@ export function Todo({
   id,
   text,
   isCompleted,
-  color = "",
+  color = "grey",
 }: TodoItem & { id: string }) {
   const dispatch = useDispatch();
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
@@ -68,13 +68,21 @@ export function Todo({
           <ColorSelection
             labelId="color-select-label"
             id="color-select"
-            value={color}
+            todocolor={color}
             label="Color"
             MenuProps={{ PaperProps: { style: { maxHeight: "160px" } } }}
             onChange={(e) =>
-              dispatch(todoColored({ id: id, color: e.target.value as Color }))
+              dispatch(
+                todoColored({
+                  id: id,
+                  color: (e.target.value || defaultColor) as Color,
+                })
+              )
             }
           >
+            <MenuItem value="">
+              <em>none</em>
+            </MenuItem>
             {colors.map((color) => (
               <MenuItem key={color.id} value={color.value}>
                 {color.value}
