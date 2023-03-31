@@ -11,6 +11,7 @@ export type Color =
   | "blue"
   | "maroon"
   | "pink"
+  | "orange"
   | "grey";
 
 export const colors: IdValuePair<Color>[] = [
@@ -24,4 +25,5 @@ export const colors: IdValuePair<Color>[] = [
   { id: 7, value: "blue" },
   { id: 8, value: "maroon" },
   { id: 9, value: "pink" },
+  { id: 10, value: "orange" },
 ];
