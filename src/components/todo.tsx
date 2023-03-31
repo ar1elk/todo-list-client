@@ -43,7 +43,7 @@ export function Todo({
   }, [shouldFadeOut, dispatch, id]);
   return (
     <Fade in={!shouldFadeOut} timeout={fadeOutAnimationTimeout}>
-      <TodoPaper elevation={0} color={color} isCompleted={isCompleted}>
+      <TodoPaper elevation={0} color={color} iscompleted={isCompleted ? 1 : 0}>
         <CompleteTodoButton
           onClick={() => dispatch(todoCompleted(id))}
           value={color}
@@ -57,14 +57,14 @@ export function Todo({
         <TodoText
           multiline
           fullWidth
-          borderColor={color}
+          bordercolor={color}
           value={text}
           onChange={(e) =>
             dispatch(todoTextUpdated({ id: id, text: e.target.value }))
           }
         ></TodoText>
         <FormControl>
-          <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
+          <ColorInputLabel labelcolor={color}>Color</ColorInputLabel>
           <ColorSelection
             labelId="color-select-label"
             id="color-select"
