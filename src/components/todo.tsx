@@ -1,7 +1,7 @@
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
-import { FormControl, InputLabel, MenuItem } from "@mui/material";
+import { FormControl, MenuItem } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { Color, colors } from "../datasets/colors";
 import { TodoItem } from "../dto's/todoItem";
@@ -12,6 +12,7 @@ import {
   todoTextUpdated,
 } from "../redux/todosSlice";
 import {
+  ColorInputLabel,
   ColorSelection,
   CompleteTodoButton,
   RemoveTodoButton,
@@ -49,7 +50,7 @@ export function Todo({
         }
       ></TodoText>
       <FormControl>
-        <InputLabel>Color</InputLabel>
+        <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
         <ColorSelection
           labelId="color-select-label"
           id="color-select"

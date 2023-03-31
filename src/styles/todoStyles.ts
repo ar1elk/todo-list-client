@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {
   IconButton,
+  InputLabel,
   Paper,
   Select,
   TextField,
@@ -47,6 +48,7 @@ export const TodoPaper = styled(Paper)<{ isCompleted?: boolean }>`
   align-items: center;
   width: 100%;
   border: 1px solid ${(props) => props.color as Color};
+  transition: border-color 100ms;
   ${(props) =>
     props.isCompleted &&
     `
@@ -58,10 +60,19 @@ export const TodoPaper = styled(Paper)<{ isCompleted?: boolean }>`
 export const ColorSelection = styled(Select)`
   color: ${(props) => props.value as Color};
   &:focus {
+    transition: border-color 100ms;
     outline: 2px solid ${(props) => props.value as Color};
   }
   &.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    transition: border-color 100ms;
     border-color: ${(props) => props.value as Color};
   }
   min-width: 100px;
+`;
+
+export const ColorInputLabel = styled(InputLabel)<{ labelColor: Color }>`
+  color: ${(props) => props.labelColor as Color};
+  &.Mui-focused {
+    color: ${(props) => props.labelColor as Color};
+  }
 `;
