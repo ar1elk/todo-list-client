@@ -31,7 +31,7 @@ export const TodoText = styled(TextField)<TodoTextProps>`
     border-color: ${(props) => props.borderColor as Color};
   }
   & .MuiOutlinedInput-notchedOutline {
-    transition: border-color 200ms;
+    transition: border-color 300ms;
     border-color: transparent;
   }
   max-width: calc(100% - 230px);
@@ -39,11 +39,17 @@ export const TodoText = styled(TextField)<TodoTextProps>`
   padding-bottom: 8px;
 `;
 
-export const TodoPaper = styled(Paper)`
+export const TodoPaper = styled(Paper)<{ isCompleted?: boolean }>`
   display: flex;
   align-items: center;
   width: 100%;
   border: 1px solid ${(props) => props.color as Color};
+  ${(props) =>
+    props.isCompleted &&
+    `
+  text-decoration: line-through;
+  text-decoration-color: ${props.color as Color}
+  `}
 `;
 
 export const ColorSelection = styled(Select)`
