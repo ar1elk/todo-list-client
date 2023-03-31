@@ -15,6 +15,7 @@ export const CompleteTodoButton = styled(IconButton)`
 
 export const RemoveTodoButton = styled(IconButton)`
   color: ${(props) => (props.value || "red") as Color};
+  margin-left: auto;
 `;
 
 type TodoTextProps = Omit<TextFieldProps, "borderColor"> & {
@@ -25,6 +26,7 @@ export const TodoText = styled(TextField)<TodoTextProps>`
   & .MuiInputBase-input {
     font-size: 1.5rem;
     font-family: Assistant;
+    color: ${(props) => props.borderColor as Color};
   }
   & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
   & .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
@@ -34,7 +36,8 @@ export const TodoText = styled(TextField)<TodoTextProps>`
     transition: border-color 300ms;
     border-color: transparent;
   }
-  max-width: calc(100% - 230px);
+  max-width: calc(100% - 250px);
+  margin-right: 20px;
   padding-top: 8px;
   padding-bottom: 8px;
 `;
@@ -57,10 +60,8 @@ export const ColorSelection = styled(Select)`
   &:focus {
     outline: 2px solid ${(props) => props.value as Color};
   }
-
   &.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
     border-color: ${(props) => props.value as Color};
   }
-  height: 30px;
-  margin-left: auto;
+  min-width: 100px;
 `;
