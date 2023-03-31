@@ -1,7 +1,7 @@
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
-import { MenuItem } from "@mui/material";
+import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { Color, colors } from "../datasets/colors";
 import { TodoItem } from "../dto's/todoItem";
@@ -48,21 +48,25 @@ export function Todo({
           dispatch(todoTextUpdated({ id: id, text: e.target.value }))
         }
       ></TodoText>
-      <ColorSelection
-        labelId="color-select-label"
-        id="color-select"
-        value={color}
-        label="Color"
-        onChange={(e) =>
-          dispatch(todoColored({ id: id, color: e.target.value as Color }))
-        }
-      >
-        {colors.map((color) => (
-          <MenuItem key={color.id} value={color.value}>
-            {color.value}
-          </MenuItem>
-        ))}
-      </ColorSelection>
+      <FormControl>
+        <InputLabel>Color</InputLabel>
+        <ColorSelection
+          labelId="color-select-label"
+          id="color-select"
+          value={color}
+          label="Color"
+          MenuProps={{ PaperProps: { style: { maxHeight: "160px" } } }}
+          onChange={(e) =>
+            dispatch(todoColored({ id: id, color: e.target.value as Color }))
+          }
+        >
+          {colors.map((color) => (
+            <MenuItem key={color.id} value={color.value}>
+              {color.value}
+            </MenuItem>
+          ))}
+        </ColorSelection>
+      </FormControl>
       <RemoveTodoButton onClick={() => dispatch(todoRemoved(id))} value={color}>
         <ClearIcon fontSize="large" />
       </RemoveTodoButton>
