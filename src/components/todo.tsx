@@ -28,7 +28,7 @@ export function Todo({
   const dispatch = useDispatch();
 
   return (
-    <TodoPaper elevation={0} color={color}>
+    <TodoPaper elevation={0} color={color} isCompleted={isCompleted}>
       <CompleteTodoButton
         onClick={() => dispatch(todoCompleted(id))}
         value={color}
