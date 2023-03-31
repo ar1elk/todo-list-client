@@ -48,7 +48,6 @@ export const TodoPaper = styled(Paper)<{ isCompleted?: boolean }>`
   align-items: center;
   width: 100%;
   border: 1px solid ${(props) => props.color as Color};
-  transition: border-color 100ms;
   ${(props) =>
     props.isCompleted &&
     `
