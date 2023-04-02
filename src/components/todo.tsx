@@ -1,29 +1,29 @@
-import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
-import ClearIcon from "@mui/icons-material/Clear";
-import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
-import { FormControl, MenuItem, Fade } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { Color, colors } from "../datasets/colors";
+import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import ClearIcon from '@mui/icons-material/Clear';
+import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
+import { Fade, FormControl, MenuItem } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Color, colors } from '../datasets/colors';
 import { TodoItem } from "../dto's/todoItem";
 import {
   todoColored,
   todoCompleted,
   todoRemoved,
   todoTextUpdated,
-} from "../redux/todosSlice";
-import { useEffect, useState } from "react";
-import { TodoPaper } from "../styles/todoPaperStyle";
-import { CompleteTodoButton } from "../styles/completeTodoButtonStyle";
-import { ColorInputLabel } from "../styles/colorInputLabelStyle";
-import { ColorSelection, defaultColor } from "../styles/colorSelectionStyle";
-import { RemoveTodoButton } from "../styles/removeTodoButtonStyle";
-import { TodoText } from "../styles/todoTextStyle";
+} from '../redux/todosSlice';
+import { ColorInputLabel } from '../styles/colorInputLabelStyle';
+import { ColorSelection, defaultColor } from '../styles/colorSelectionStyle';
+import { CompleteTodoButton } from '../styles/completeTodoButtonStyle';
+import { RemoveTodoButton } from '../styles/removeTodoButtonStyle';
+import { TodoPaper } from '../styles/todoPaperStyle';
+import { TodoText } from '../styles/todoTextStyle';
 
 export function Todo({
   id,
   text,
   isCompleted,
-  color = "grey",
+  color = 'grey',
 }: TodoItem & { id: string }) {
   const dispatch = useDispatch();
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
@@ -43,35 +43,36 @@ export function Todo({
   }, [shouldFadeOut, dispatch, id]);
   return (
     <Fade in={!shouldFadeOut} timeout={fadeOutAnimationTimeout}>
-      <TodoPaper elevation={0} color={color} iscompleted={isCompleted ? 1 : 0}>
+      <TodoPaper elevation={0} color={color} isCompleted={isCompleted ? 1 : 0}>
         <CompleteTodoButton
           onClick={() => dispatch(todoCompleted(id))}
           value={color}
         >
           {isCompleted ? (
-            <TaskAltOutlinedIcon fontSize="large" />
+            <TaskAltOutlinedIcon fontSize='large' />
           ) : (
-            <CircleOutlinedIcon fontSize="large" />
+            <CircleOutlinedIcon fontSize='large' />
           )}
         </CompleteTodoButton>
         <TodoText
           multiline
           fullWidth
-          bordercolor={color}
+          borderColor={color}
+          transparentBorder
           value={text}
           onChange={(e) =>
             dispatch(todoTextUpdated({ id: id, text: e.target.value }))
           }
         ></TodoText>
         <FormControl>
-          <ColorInputLabel labelcolor={color}>Color</ColorInputLabel>
+          <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
           <ColorSelection
-            labelId="color-select-label"
-            id="color-select"
-            todocolor={color}
-            value={color === defaultColor ? "" : color}
-            label="Color"
-            MenuProps={{ PaperProps: { style: { maxHeight: "160px" } } }}
+            labelId='color-select-label'
+            id='color-select'
+            todoColor={color}
+            value={color === defaultColor ? '' : color}
+            label='Color'
+            MenuProps={{ PaperProps: { style: { maxHeight: '160px' } } }}
             onChange={(e) =>
               dispatch(
                 todoColored({
@@ -81,7 +82,7 @@ export function Todo({
               )
             }
           >
-            <MenuItem value="">
+            <MenuItem value=''>
               <em>none</em>
             </MenuItem>
             {colors.map((color) => (
@@ -92,7 +93,7 @@ export function Todo({
           </ColorSelection>
         </FormControl>
         <RemoveTodoButton onClick={handleRemoveTodo} value={color}>
-          <ClearIcon fontSize="large" />
+          <ClearIcon fontSize='large' />
         </RemoveTodoButton>
       </TodoPaper>
     </Fade>
