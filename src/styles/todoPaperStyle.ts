@@ -5,7 +5,6 @@ import { Color } from '../datasets/colors';
 export const TodoPaper = styled(Paper)<{ isCompleted?: number }>`
   display: flex;
   align-items: center;
-  width: 100%;
   background-color: #313233;
   border: 1px solid ${(props: any) => props.color as Color};
   ${(props: any) =>

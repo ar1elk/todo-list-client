@@ -1,5 +1,5 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { todoAdded } from '../redux/todosSlice';
 import { AddTodoButton, AddTodoDiv } from '../styles/addTodoButtonStyle';
@@ -12,7 +12,7 @@ export function AddTodo() {
   return (
     <AddTodoDiv>
       <AddTodoButton
-        onClick={(e) => {
+        onClick={() => {
           dispatch(todoAdded(text));
           setText('');
         }}

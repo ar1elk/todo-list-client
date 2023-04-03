@@ -11,7 +11,6 @@ export const PaperDiv = styled.div`
 export const TodoListPaper = styled(Paper)`
   display: flex;
   flex-direction: column;
-  width: 50%;
   background-color: #313233;
   border: 3px solid black;
   max-height: 70vh;

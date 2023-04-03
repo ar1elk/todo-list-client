@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useSelector } from 'react-redux';
 import { TodosMenu } from './components/todosMenu';
 import { TodoItem } from "./dto's/todoItem";
@@ -14,7 +16,9 @@ function App() {
   );
   return (
     <BodyDiv className='App'>
-      <TodosMenu todos={todos}></TodosMenu>
+      <DndProvider backend={HTML5Backend}>
+        <TodosMenu todos={todos}></TodosMenu>
+      </DndProvider>
     </BodyDiv>
   );
 }
