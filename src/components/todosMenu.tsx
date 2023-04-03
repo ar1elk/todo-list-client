@@ -1,24 +1,18 @@
-import { useState } from 'react';
-import { useDrag } from 'react-dnd';
-import { useDispatch } from 'react-redux';
-import { draggableItems } from '../draggableItems';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { TodosDictionary } from "../dto's/todoState";
-import { todoAdded } from '../redux/todosSlice';
-import { PaperDiv, TodoListPaper } from '../styles/todoMenuStyle';
-import { TodoText } from '../styles/todoTextStyle';
-import { AddTodo } from './addTodo';
-import { TodoList } from './TodoList';
+import { PaperDiv, TodoListPaper } from "../styles/todoMenuStyle";
+import { TodoText } from "../styles/todoTextStyle";
+import { TodoList } from "./TodoList";
+import { DragTodo } from "./dragTodo";
+import { AddTodoButton, AddTodoDiv } from "../styles/addTodoButtonStyle";
+import { todoAdded } from "../redux/todosSlice";
 
 export function TodosMenu(props: { todos: TodosDictionary }) {
   const todos = props.todos;
   const dispatch = useDispatch();
-  const [text, setText] = useState('');
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: draggableItems.TODO,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const [text, setText] = useState("");
+  const [showTodoInput, setShowTodoInput] = useState(false);
 
   return (
     <PaperDiv>
@@ -26,19 +20,30 @@ export function TodosMenu(props: { todos: TodosDictionary }) {
         <TodoList
           todos={todos}
           onDrop={() => {
-            dispatch(todoAdded(text));
-            setText('');
+            setShowTodoInput(true);
           }}
         ></TodoList>
-        <AddTodo />
-        <TodoText
-          ref={drag}
-          multiline
-          fullWidth
-          borderColor={'white'}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        ></TodoText>
+        {showTodoInput && (
+          <AddTodoDiv>
+            <TodoText
+              multiline
+              fullWidth
+              borderColor={"white"}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            ></TodoText>
+            <AddTodoButton
+              variant="contained"
+              onClick={() => {
+                dispatch(todoAdded(text));
+                setShowTodoInput(false);
+              }}
+            >
+              Add todo
+            </AddTodoButton>
+          </AddTodoDiv>
+        )}
+        <DragTodo />
       </TodoListPaper>
     </PaperDiv>
   );

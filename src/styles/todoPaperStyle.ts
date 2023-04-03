@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { Paper } from '@mui/material';
-import { Color } from '../datasets/colors';
+import styled from "@emotion/styled";
+import { Paper } from "@mui/material";
+import { Color } from "../datasets/colors";
 
 export const TodoPaper = styled(Paper)<{ isCompleted?: number }>`
   display: flex;

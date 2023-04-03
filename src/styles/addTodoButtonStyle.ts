@@ -1,13 +1,14 @@
-import styled from '@emotion/styled';
-import { IconButton } from '@mui/material';
+import styled from "@emotion/styled";
+import { Button } from "@mui/material";
 
-export const AddTodoButton = styled(IconButton)`
-  color: red;
+export const AddTodoButton = styled(Button)`
+  &:hover {
+    background-color: red;
+  }
 `;
 
 export const AddTodoDiv = styled.div`
   display: flex;
   align-items: center;
-  margin-top: auto;
-  padding-top: 5px;
+  padding-left: 16px;
 `;

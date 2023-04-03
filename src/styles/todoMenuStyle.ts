@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { Paper } from '@mui/material';
+import styled from "@emotion/styled";
+import { Paper } from "@mui/material";
 
 export const PaperDiv = styled.div`
   display: flex;
@@ -13,6 +13,12 @@ export const TodoListPaper = styled(Paper)`
   flex-direction: column;
   background-color: #313233;
   border: 3px solid black;
-  max-height: 70vh;
+  max-height: 100vh;
+  width: fit-content;
   overflow-y: scroll;
+
+  // Hide scrollbar when not needed
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

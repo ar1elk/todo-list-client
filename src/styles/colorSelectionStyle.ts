@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
-import { Select } from '@mui/material';
-import { Color } from '../datasets/colors';
+import styled from "@emotion/styled";
+import { Select } from "@mui/material";
+import { Color } from "../datasets/colors";
 
-export const defaultColor: Color = 'grey';
+export const defaultColor: Color = "grey";
 
 export const ColorSelection = styled(Select)<{ todoColor?: Color }>`
   color: ${(props: any) => props.todoColor};
@@ -15,4 +15,5 @@ export const ColorSelection = styled(Select)<{ todoColor?: Color }>`
     border-color: ${(props: any) => props.todoColor};
   }
   min-width: 100px;
+  margin-right: auto;
 `;

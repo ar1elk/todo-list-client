@@ -1,15 +1,15 @@
-import { List, ListItem } from '@mui/material';
-import { useDrop } from 'react-dnd';
-import { draggableItems } from '../draggableItems';
+import { List, ListItem } from "@mui/material";
+import { useDrop } from "react-dnd";
+import { draggableItems } from "../draggableItems";
 import { TodosDictionary } from "../dto's/todoState";
-import { Todo } from './todo';
+import { Todo } from "./todo";
 
 export function TodoList(props: {
   todos: TodosDictionary;
   onDrop: () => void;
 }) {
   const { todos, onDrop } = props;
-  const [{ isOver }, drop] = useDrop(() => ({
+  const [, drop] = useDrop(() => ({
     accept: draggableItems.TODO,
     drop: () => onDrop(),
     collect: (monitor) => ({
