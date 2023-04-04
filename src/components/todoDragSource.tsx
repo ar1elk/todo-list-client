@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { DragPreviewImage, useDrag } from 'react-dnd';
+import { useDrag } from 'react-dnd';
 import { draggableItems } from '../draggableItems';
 import { TodoDragSourceDiv } from '../styles/todoDragSourceDiv';
 import { TodoText } from '../styles/todoTextStyle';

@@ -23,7 +23,7 @@ export function Todo({
   id,
   text,
   isCompleted,
-  color = 'grey',
+  color = 'white',
 }: TodoItem & { id: string }) {
   const dispatch = useDispatch();
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
