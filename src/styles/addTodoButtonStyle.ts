@@ -1,11 +1,16 @@
-import styled from "@emotion/styled";
-import { Button } from "@mui/material";
+import styled from '@emotion/styled';
+import { styled as muiStyled } from '@mui/material';
+import { Button } from '@mui/material';
 
-export const AddTodoButton = styled(Button)`
+export const AddTodoButton = muiStyled(Button)(
+  ({ theme }) => `
+  background-color: ${theme.palette.primary.main}
+  color: ${theme.palette.secondary.dark};
   &:hover {
-    background-color: red;
+    background-color: ${theme.palette.secondary.main};
   }
-`;
+`
+);
 
 export const AddTodoDiv = styled.div`
   display: flex;

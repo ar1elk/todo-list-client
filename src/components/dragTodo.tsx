@@ -1,7 +1,7 @@
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { useDrag } from "react-dnd";
-import { draggableItems } from "../draggableItems";
-import { DragTodoButton, DragTodoDiv } from "../styles/dragTodoButtonStyle";
+import AddIcon from '@mui/icons-material/Add';
+import { useDrag } from 'react-dnd';
+import { draggableItems } from '../draggableItems';
+import { DragTodoButton, DragTodoDiv } from '../styles/dragTodoButtonStyle';
 
 export function DragTodo() {
   const [, drag] = useDrag(() => ({
@@ -14,7 +14,7 @@ export function DragTodo() {
   return (
     <DragTodoDiv ref={drag}>
       <DragTodoButton>
-        <AddCircleIcon fontSize="large"></AddCircleIcon>
+        <AddIcon fontSize='large'></AddIcon>
       </DragTodoButton>
     </DragTodoDiv>
   );

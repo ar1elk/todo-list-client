@@ -7,6 +7,7 @@ import { TodoList } from './TodoList';
 import { DragTodo } from './dragTodo';
 import { AddTodoButton, AddTodoDiv } from '../styles/addTodoButtonStyle';
 import { todoAdded } from '../redux/todosSlice';
+import { theme } from '../styles/theme';
 
 export function TodosMenu(props: { todos: TodosDictionary }) {
   const todos = props.todos;
@@ -28,7 +29,8 @@ export function TodosMenu(props: { todos: TodosDictionary }) {
             <TodoText
               multiline
               fullWidth
-              borderColor={'white'}
+              useTheme={true}
+              borderColor={theme.palette.primary.main}
               value={text}
               onChange={(e) => setText(e.target.value)}
             ></TodoText>

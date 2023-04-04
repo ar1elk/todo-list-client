@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 import { Paper } from '@mui/material';
 import { Color } from '../datasets/colors';
+import { theme } from './theme';
 
 export const TodoPaper = styled(Paper)<{ isCompleted?: number }>`
   display: flex;
   align-items: center;
-  background-color: #313233;
+  background-color: ${theme.palette.secondary.dark};
+  width: 700px;
   border: 1px solid ${(props: any) => props.color as Color};
   ${(props: any) =>
     props.isCompleted &&

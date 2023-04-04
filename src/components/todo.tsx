@@ -15,6 +15,7 @@ import {
 import { ColorInputLabel } from '../styles/colorInputLabelStyle';
 import { ColorSelection, defaultColor } from '../styles/colorSelectionStyle';
 import { CompleteTodoButton } from '../styles/completeTodoButtonStyle';
+import { PushToRightDiv } from '../styles/pushToRightDiv';
 import { RemoveTodoButton } from '../styles/removeTodoButtonStyle';
 import { TodoPaper } from '../styles/todoPaperStyle';
 import { TodoText } from '../styles/todoTextStyle';
@@ -64,37 +65,39 @@ export function Todo({
             dispatch(todoTextUpdated({ id: id, text: e.target.value }))
           }
         ></TodoText>
-        <FormControl>
-          <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
-          <ColorSelection
-            labelId='color-select-label'
-            id='color-select'
-            todoColor={color}
-            value={color === defaultColor ? '' : color}
-            label='Color'
-            MenuProps={{ PaperProps: { style: { maxHeight: '160px' } } }}
-            onChange={(e) =>
-              dispatch(
-                todoColored({
-                  id: id,
-                  color: (e.target.value || defaultColor) as Color,
-                })
-              )
-            }
-          >
-            <MenuItem value=''>
-              <em>none</em>
-            </MenuItem>
-            {colors.map((color) => (
-              <MenuItem key={color.id} value={color.value}>
-                {color.value}
+        <PushToRightDiv>
+          <FormControl>
+            <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
+            <ColorSelection
+              labelId='color-select-label'
+              id='color-select'
+              todoColor={color}
+              value={color === defaultColor ? '' : color}
+              label='Color'
+              MenuProps={{ PaperProps: { style: { maxHeight: '160px' } } }}
+              onChange={(e) =>
+                dispatch(
+                  todoColored({
+                    id: id,
+                    color: (e.target.value || defaultColor) as Color,
+                  })
+                )
+              }
+            >
+              <MenuItem value=''>
+                <em>none</em>
               </MenuItem>
-            ))}
-          </ColorSelection>
-        </FormControl>
-        <RemoveTodoButton onClick={handleRemoveTodo} value={color}>
-          <ClearIcon fontSize='large' />
-        </RemoveTodoButton>
+              {colors.map((color) => (
+                <MenuItem key={color.id} value={color.value}>
+                  {color.value}
+                </MenuItem>
+              ))}
+            </ColorSelection>
+          </FormControl>
+          <RemoveTodoButton onClick={handleRemoveTodo} value={color}>
+            <ClearIcon fontSize='large' />
+          </RemoveTodoButton>
+        </PushToRightDiv>
       </TodoPaper>
     </Fade>
   );

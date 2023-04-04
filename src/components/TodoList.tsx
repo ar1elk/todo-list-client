@@ -19,8 +19,8 @@ export function TodoList(props: {
   }));
 
   return (
-    <TodoListDiv>
-      <List ref={drop}>
+    <TodoListDiv isOver={isOver} ref={drop}>
+      <List>
         {Object.keys(todos).map((id: string) => (
           <ListItem key={id}>
             <Todo id={id} {...todos[id]}></Todo>

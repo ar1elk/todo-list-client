@@ -1,12 +1,14 @@
-export const theme = {
-  colors: {
+import { createTheme } from '@mui/material';
+
+export const theme = createTheme({
+  palette: {
     primary: {
-      main: "#57C5B6",
-      dark: "#159895",
+      main: '#14FFEC',
+      dark: '#323232',
     },
     secondary: {
-      main: "#1A5F7A",
-      dark: "#002B5B",
+      main: '#0D7377',
+      dark: '#212121',
     },
   },
-};
+});
