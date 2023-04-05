@@ -1,9 +1,9 @@
-import { List, ListItem } from '@mui/material';
-import { useDrop } from 'react-dnd';
-import { draggableItems } from '../draggableItems';
+import { List, ListItem } from "@mui/material";
+import { useDrop } from "react-dnd";
+import { draggableItems } from "../draggableItems";
 import { TodosDictionary } from "../dto's/todoState";
-import { TodoListDiv } from '../styles/todoMenuStyle';
-import { Todo } from './todo';
+import { TodoListDiv } from "../styles/todoMenuStyle";
+import { Todo } from "./todo";
 
 export function TodoList(props: {
   todos: TodosDictionary;
