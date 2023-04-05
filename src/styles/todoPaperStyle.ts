@@ -3,7 +3,9 @@ import { Paper } from "@mui/material";
 import { Color } from "../datasets/colors";
 import { theme } from "./theme";
 
-export const TodoPaper = styled(Paper)<{ isCompleted?: number }>`
+export const TodoPaper = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== "isCompleted",
+})<{ isCompleted?: number }>`
   display: flex;
   align-items: center;
   background-color: ${theme.palette.background.default};

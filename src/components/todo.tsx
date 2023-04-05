@@ -1,30 +1,30 @@
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import ClearIcon from '@mui/icons-material/Clear';
-import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
-import { Fade, FormControl, MenuItem } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Color, colors } from '../datasets/colors';
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
+import ClearIcon from "@mui/icons-material/Clear";
+import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
+import { Fade, FormControl, MenuItem } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Color, colors } from "../datasets/colors";
 import { TodoItem } from "../dto's/todoItem";
 import {
   todoColored,
   todoCompleted,
   todoRemoved,
   todoTextUpdated,
-} from '../redux/todosSlice';
-import { ColorInputLabel } from '../styles/colorInputLabelStyle';
-import { ColorSelection, defaultColor } from '../styles/colorSelectionStyle';
-import { CompleteTodoButton } from '../styles/completeTodoButtonStyle';
-import { PushToRightDiv } from '../styles/pushToRightDiv';
-import { RemoveTodoButton } from '../styles/removeTodoButtonStyle';
-import { TodoPaper } from '../styles/todoPaperStyle';
-import { TodoText } from '../styles/todoTextStyle';
+} from "../redux/todosSlice";
+import { ColorInputLabel } from "../styles/colorInputLabelStyle";
+import { ColorSelection, defaultColor } from "../styles/colorSelectionStyle";
+import { CompleteTodoButton } from "../styles/completeTodoButtonStyle";
+import { PushToRightDiv } from "../styles/pushToRightDiv";
+import { RemoveTodoButton } from "../styles/removeTodoButtonStyle";
+import { TodoPaper } from "../styles/todoPaperStyle";
+import { TodoText } from "../styles/todoTextStyle";
 
 export function Todo({
   id,
   text,
   isCompleted,
-  color = 'white',
+  color = "white",
 }: TodoItem & { id: string }) {
   const dispatch = useDispatch();
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
@@ -50,9 +50,9 @@ export function Todo({
           value={color}
         >
           {isCompleted ? (
-            <TaskAltOutlinedIcon fontSize='large' />
+            <TaskAltOutlinedIcon fontSize="large" />
           ) : (
-            <CircleOutlinedIcon fontSize='large' />
+            <CircleOutlinedIcon fontSize="large" />
           )}
         </CompleteTodoButton>
         <TodoText
@@ -69,12 +69,12 @@ export function Todo({
           <FormControl>
             <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
             <ColorSelection
-              labelId='color-select-label'
-              id='color-select'
+              labelId="color-select-label"
+              id="color-select"
               todoColor={color}
-              value={color === defaultColor ? '' : color}
-              label='Color'
-              MenuProps={{ PaperProps: { style: { maxHeight: '160px' } } }}
+              value={color === defaultColor ? "" : color}
+              label="Color"
+              MenuProps={{ PaperProps: { style: { maxHeight: "160px" } } }}
               onChange={(e) =>
                 dispatch(
                   todoColored({
@@ -84,7 +84,7 @@ export function Todo({
                 )
               }
             >
-              <MenuItem value=''>
+              <MenuItem value="">
                 <em>none</em>
               </MenuItem>
               {colors.map((color) => (
@@ -95,7 +95,7 @@ export function Todo({
             </ColorSelection>
           </FormControl>
           <RemoveTodoButton onClick={handleRemoveTodo} value={color}>
-            <ClearIcon fontSize='large' />
+            <ClearIcon fontSize="large" />
           </RemoveTodoButton>
         </PushToRightDiv>
       </TodoPaper>

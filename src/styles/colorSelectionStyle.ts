@@ -1,10 +1,12 @@
-import styled from '@emotion/styled';
-import { Select } from '@mui/material';
-import { Color } from '../datasets/colors';
+import styled from "@emotion/styled";
+import { Select } from "@mui/material";
+import { Color } from "../datasets/colors";
 
-export const defaultColor: Color = 'white';
+export const defaultColor: Color = "white";
 
-export const ColorSelection = styled(Select)<{ todoColor?: Color }>`
+export const ColorSelection = styled(Select, {
+  shouldForwardProp: (prop) => prop !== "todoColor",
+})<{ todoColor?: Color }>`
   color: ${(props: any) => props.todoColor};
   &:focus {
     transition: border-color 100ms;

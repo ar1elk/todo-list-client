@@ -8,7 +8,12 @@ type TodoTextProps = Omit<TextFieldProps, "borderColor"> & {
   useTheme?: boolean;
 };
 
-export const TodoText = styled(TextField)<TodoTextProps>`
+export const TodoText = styled(TextField, {
+  shouldForwardProp: (prop) =>
+    prop !== "transparentBorder" &&
+    prop !== "useTheme" &&
+    prop !== "borderColor",
+})<TodoTextProps>`
   & .MuiInputBase-input {
     font-size: 1.5rem;
     font-family: Assistant;
@@ -28,7 +33,7 @@ export const TodoText = styled(TextField)<TodoTextProps>`
   }
   color: ${(props: any) =>
     props.useTheme ? theme.palette.primary.main : props.borderColor};
-  max-width: fit-content;
+  width: 400px;
   margin-right: 20px;
   padding-top: 8px;
   padding-bottom: 8px;
