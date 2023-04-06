@@ -8,7 +8,7 @@ export const AddTodoButton = muiStyled(Button)(
   color: ${theme.palette.text.primary};
   font-size: 1.1em;
   font-family: Assistant;
-  font-weight: 300;
+  font-weight: 500;
   &:hover {
     background-color: ${theme.palette.action.hover};
   }
