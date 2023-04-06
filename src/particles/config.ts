@@ -32,10 +32,10 @@ export const config: ISourceOptions = {
   },
   particles: {
     color: {
-      value: "#ffffff",
+      value: theme.palette.primary.main,
     },
     links: {
-      color: "#ffffff",
+      color: theme.palette.primary.main,
       distance: 150,
       enable: true,
       opacity: 0.5,
