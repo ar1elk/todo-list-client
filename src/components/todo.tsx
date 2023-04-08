@@ -1,30 +1,28 @@
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
-import { Fade, FormControl, MenuItem } from "@mui/material";
+import { Fade } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Color, colors } from "../datasets/colors";
 import { TodoItem } from "../dto's/todoItem";
 import {
-  todoColored,
   todoCompleted,
   todoRemoved,
   todoTextUpdated,
 } from "../redux/todosSlice";
-import { ColorInputLabel } from "../styles/colorInputLabelStyle";
-import { ColorSelection, defaultColor } from "../styles/colorSelectionStyle";
 import { CompleteTodoButton } from "../styles/completeTodoButtonStyle";
 import { PushToRightDiv } from "../styles/pushToRightDiv";
 import { RemoveTodoButton } from "../styles/removeTodoButtonStyle";
 import { TodoPaper } from "../styles/todoPaperStyle";
 import { TodoText } from "../styles/todoTextStyle";
+import { TodoColorSelection } from "./todoColorSelection";
+import { DEFAULT_TODO_COLOR } from "../defaultTodoColor";
 
 export function Todo({
   id,
   text,
   isCompleted,
-  color = "white",
+  color = DEFAULT_TODO_COLOR,
 }: TodoItem & { id: string }) {
   const dispatch = useDispatch();
   const [shouldFadeOut, setShouldFadeOut] = useState(false);
@@ -46,6 +44,7 @@ export function Todo({
     <Fade in={!shouldFadeOut} timeout={fadeOutAnimationTimeout}>
       <TodoPaper elevation={0} color={color} isCompleted={isCompleted ? 1 : 0}>
         <CompleteTodoButton
+          buttonColor={color}
           onClick={() => dispatch(todoCompleted(id))}
           value={color}
         >
@@ -66,35 +65,12 @@ export function Todo({
           }
         ></TodoText>
         <PushToRightDiv>
-          <FormControl>
-            <ColorInputLabel labelColor={color}>Color</ColorInputLabel>
-            <ColorSelection
-              labelId="color-select-label"
-              id="color-select"
-              todoColor={color}
-              value={color === defaultColor ? "" : color}
-              label="Color"
-              MenuProps={{ PaperProps: { style: { maxHeight: "160px" } } }}
-              onChange={(e) =>
-                dispatch(
-                  todoColored({
-                    id: id,
-                    color: (e.target.value || defaultColor) as Color,
-                  })
-                )
-              }
-            >
-              <MenuItem value="">
-                <em>none</em>
-              </MenuItem>
-              {colors.map((color) => (
-                <MenuItem key={color.id} value={color.value}>
-                  {color.value}
-                </MenuItem>
-              ))}
-            </ColorSelection>
-          </FormControl>
-          <RemoveTodoButton onClick={handleRemoveTodo} value={color}>
+          <TodoColorSelection id={id} />
+          <RemoveTodoButton
+            buttonColor={color}
+            onClick={handleRemoveTodo}
+            value={color}
+          >
             <ClearIcon fontSize="large" />
           </RemoveTodoButton>
         </PushToRightDiv>

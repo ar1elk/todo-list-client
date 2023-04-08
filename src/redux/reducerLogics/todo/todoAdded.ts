@@ -6,5 +6,8 @@ export function onTodoAdded(
   state: TodoState,
   action: Action & { payload: string }
 ): void {
-  state.todos[uuidv4()] = { text: action.payload, isCompleted: false };
+  state.todos[uuidv4()] = {
+    text: action.payload,
+    isCompleted: false,
+  };
 }

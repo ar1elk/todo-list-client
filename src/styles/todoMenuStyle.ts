@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { styled as muiStyled } from "@mui/material/styles";
 import { Paper } from "@mui/material";
+import { styled as muiStyled } from "@mui/material/styles";
 import { theme } from "./theme";
 
 export const PaperDiv = styled.div`
